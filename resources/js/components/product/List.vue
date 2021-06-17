@@ -11,6 +11,8 @@
 			        <th scope="col">#</th>
 			        <th scope="col">Name</th>
 			        <th scope="col">Price</th>
+			        <th scope="col">Updated At</th>
+			        <th scope="col">Created At</th>
 			        <th scope="col">Action</th>
 			    </tr>
 			</thead>
@@ -18,10 +20,12 @@
 			    <tr v-for="(product, index) in products" :key="product.id">
 			        <th scope="row">{{ index+1 }}</th>
 			        <td>{{ product.name }}</td>
-			        <td>{{ product.price }}</td>
+			        <td>{{ product.price | formatNumber }}</td>
+			        <td>{{ product.updated_at | formatDateTime('DD/MM/YYYY HH:mm') }}</td>
+			        <td>{{ product.created_at | formatDateTime('DD/MM/YYYY HH:mm') }}</td>
 			        <td>
                         <router-link class="btn btn-primary" :to="`/products/edit/${product.id}`">Edit</router-link>
-                        <input @click="deleteProduct(product.id)" class="btn btn-danger" type="button" value="Delete" />
+						<button @click="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
                     </td>
 			    </tr>
 			</tbody>

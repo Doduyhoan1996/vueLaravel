@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import {RESOURCE_PRODUCT} from '../api/api';
 
+const PRODUCT_GET_LIST = '/api/products';
+
 Vue.use(Vuex);
 
 const productStore = {
@@ -21,8 +23,10 @@ const productStore = {
     },
     actions: {
         fetch({ commit }) {
-            return axios.get(RESOURCE_PRODUCT)
-                .then(response => commit('FETCH', response.data))
+            return axios.get(PRODUCT_GET_LIST)
+                .then( (response) => {
+                    commit('FETCH', response.data)
+                })
                 .catch();
         },
         fetchOne({ commit }, id) {

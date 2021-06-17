@@ -20,6 +20,8 @@ const router = new VueRouter({
 });
 window.events = new Vue();
 
+require('./filter')
+
 const app = new Vue({
     el: '#app',
     template: '<App/>',
